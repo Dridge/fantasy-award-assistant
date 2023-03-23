@@ -74,3 +74,9 @@ Display GWs in each month
 ### Produce a MoM
 
 With that data for the given month on each manager return the manager that had the best "score"
+
+## Insiders
+
+Similar to MkDocs we follow a sponsorware and insiders approach to releases and advanced features. Advanced features being anything beyond the basic and free functionality. New features are first exclusively released to sponsors as part of Insiders. I am new to this concept so have taken the lead from other projects specifically mkdocs as an example of how this can work well. Their documentation is great on the subject: https://squidfunk.github.io/mkdocs-material/insiders/
+
+I plan to use mkdocs in this project and others in the near future.
