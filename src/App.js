@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Find out who is your fantasy premier league manager of the month!</p>
+        <p className="App-header-text" >Who is your fantasy premier league manager of the month?</p>
      </header>
        <body className="App-body">
        <div>

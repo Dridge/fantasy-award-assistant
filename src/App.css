@@ -38,7 +38,12 @@ p {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding-bottom: 70px
+}
+
+.App-header-text{
+  font-size: 15px;
+  color: #696ba6;
+  font-style: italic;
 }
 
 .App-body {
