@@ -1,4 +1,3 @@
-import DateField from 'react-native-datefield';
 import logo from './images/logo.png';
 import './App.css';
 
@@ -10,15 +9,15 @@ function App() {
         <p>Find out who is your fantasy premier league manager of the month!</p>
      </header>
        <body className="App-body">
-          <input id="leagueIdInput" type="number"/>
-          <p>Date</p>
-          <div>
-            <p>Rising star weighting</p>
-            <input id="risingStarId" type="number"/>
-            <p>Domination weighting</p>
-            <input id="dominationId" type="number"/>
-            <p>Consistency weighting</p>
-            <input id="consistencyId" type="number"/>
+       <div>
+          <p>League Id <input id="leagueIdInput" type="number"/></p>
+          <p>Date <input id="date" type="number"/></p>
+            <p>Rising star weighting <input id="risingStarId" type="number"/>
+            </p>
+            <p>Domination weighting <input id="dominationId" type="number"/>
+            </p>
+            <p>Consistency weighting <input id="consistencyId" type="number"/>
+            </p>
             </div>
           <GoButton />
           <p>Manager of the month</p>
@@ -39,7 +38,7 @@ function GoButton() {
 
 function Result() {
   return (
-    <button className="simple-button">result</button>
+    <p className="simple-text">result</p>
   );
 }
 
