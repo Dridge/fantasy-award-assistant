@@ -11,7 +11,7 @@ function App() {
         <GoButton />
         </body>
         <div className="App-footer">
-          <p>Copyright © 2024-present, Richard Eldridge. All rights reserved.</p>
+          <p>Copyright © 2023-present, Richard Eldridge. All rights reserved.</p>
         </div>
     </div>
   );
