@@ -41,7 +41,15 @@ MVP is a Manager of the month award based on:
 - domination
 - consistency
 
-## The technical details
+## Development
+
+This is a React web app.
+
+- Start it up by running `npm start`.
+- Build with `npm run build`
+- The build cmd may prompt for install: `npm install -g serve`
+
+## The implementation details
 
 ### Simple web form
 
