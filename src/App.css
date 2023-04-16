@@ -10,35 +10,42 @@
   height: auto;
 }
 
+/* desktop breakpoint */
+@media (min-width:1024px) {
+    .content-with-sidebars > * {
+        width:10%;
+    }
+    .content-with-sidebars > *:nth-child(1) {
+        width:80%;
+    }
+    .content-with-sidebars > *:nth-child(2) {
+        order:-1;
+    }
+}
+
 div {
-  border: 15px solid green;
+  #border: 3px solid green;
   #padding: 20px;
   #margin: 20px;
 }
 
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
+/* container */
+.responsive-three-column-grid {
+    display:block;
 }
 
-.column {
-  float: left;
+/* columns */
+.responsive-three-column-grid > * {
+    padding:1rem;
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.left, .right {
-  width: 33.33%;
-}
-
-.middle {
-  width: 33.33%;
+/* tablet breakpoint */
+@media (min-width:768px) {
+    .responsive-three-column-grid {
+        display: grid;
+        grid-auto-rows: 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 
 p {
@@ -47,19 +54,6 @@ p {
 
 label {
   color: #000000;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  text-align: right;
-  width: 400px;
-  line-height: 26px;
-  margin-bottom: 10px;
-}
-
-input, select {
-  height: 20px;
-  margin-left: 10px;
-  flex: 0 0 200px;
 }
 
 .result {
@@ -89,35 +83,12 @@ input, select {
 }
 
 .App-body {
+  accent-color: #008CBA;
   background-color: #fffff;
-  min-height: 60%;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding-bottom: 70px
-}
-
-.App-footer {
-  background-color: #fffff;
-  min-height: 10%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(0px + 1vmin);
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: #00000;
-  text-align: center;
-}
-
-.simple-button {
-  color: #00000;
 }
 
 .simple-text {
@@ -127,4 +98,23 @@ input, select {
 
 .App-link {
   color: #61dafb;
+}
+
+.button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  selectable: false;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.button:hover {
+   background-color: #015a77;
 }
