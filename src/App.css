@@ -3,24 +3,8 @@
 }
 
 .App-logo {
-  pointer-events: none;
-  max-width:500px;
-  max-height:200px;
-  width: auto;
+  max-width: 100%;
   height: auto;
-}
-
-/* desktop breakpoint */
-@media (min-width:1024px) {
-    .content-with-sidebars > * {
-        width:10%;
-    }
-    .content-with-sidebars > *:nth-child(1) {
-        width:80%;
-    }
-    .content-with-sidebars > *:nth-child(2) {
-        order:-1;
-    }
 }
 
 div {
@@ -29,45 +13,54 @@ div {
   #margin: 20px;
 }
 
+label {
+
+}
+
 /* container */
 .responsive-three-column-grid {
-    display:block;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
 /* columns */
 .responsive-three-column-grid > * {
-    padding:1rem;
+  flex: 1 1 100%;
+  padding: 1rem;
+  max-width: 100%;
 }
 
 /* tablet breakpoint */
-@media (min-width:768px) {
-    .responsive-three-column-grid {
-        display: grid;
-        grid-auto-rows: 1fr;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+@media (min-width: 768px) {
+  .responsive-three-column-grid {
+    flex-wrap: nowrap;
+    gap: 2rem;
+  }
+
+  .responsive-three-column-grid > * {
+    flex-basis: calc((100% - 4rem) / 3);
+    max-width: calc((100% - 4rem) / 3);
+  }
 }
 
-p {
-  color: #000000
-}
-
-label {
+p,
+label,
+.result,
+.simple-text {
   color: #000000;
 }
 
 .result {
-  color: #000000;
   border-color: #696ba6;
-  min-width:500px;
-  min-height:50px;
-  max-width:100%;
-  max-height:50px;
+  min-height: 50px;
+  max-width: 100%;
 }
 
 .App-header {
   background-color: #fffff;
-  min-height: 30%;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,7 +69,7 @@ label {
   color: white;
 }
 
-.App-header-text{
+.App-header-text {
   font-size: 15px;
   color: #696ba6;
   font-style: italic;
@@ -85,6 +78,8 @@ label {
 .App-body {
   accent-color: #008CBA;
   background-color: #fffff;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -92,7 +87,6 @@ label {
 }
 
 .simple-text {
-  color: #00000;
   border-color: #696ba6;
 }
 
@@ -109,12 +103,9 @@ label {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  selectable: false;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  user-select: none;
 }
 
 .button:hover {
-   background-color: #015a77;
+  background-color: #015a77;
 }
