@@ -1,5 +1,5 @@
 # Fantasy League Manager Award Assistant
-Lets make fantasy premier league more fun, for those in private leagues with group chats find out who your Manager of the Month is easily and consistently.
+Let's make fantasy premier league more fun, for those in private leagues with group chats find out who your Manager of the Month is easily and consistently.
 
 
 ## The Idea
@@ -19,7 +19,7 @@ A paid section that can send out emails / reminders and full customisation of wh
 Other potential features are:
 
 1. Weightings for three categories that factor into manager of the month award
-1. a floor and cieling value for each category, if you are far and away the most dominant then disregard weightings
+1. a floor and ceiling value for each category, if you are far and away the most dominant then disregard weightings
 1. Change the categories that factor into manager of the month award
 1. Optional weekly awards (MoM but applied to the week)
 1. Manager of the year award
@@ -43,7 +43,9 @@ MVP is a Manager of the month award based on:
 
 ## Development
 
-This is a React web app.
+This is a React web app. Currently, it is only working with node v16.
+
+If unsure see node, nvm and npm docs, but try `nvm install 16 && nvm use 16`
 
 - Start it up by running `npm start`.
 - Build with `npm run build`
@@ -85,6 +87,6 @@ With that data for the given month on each manager return the manager that had t
 
 ## Insiders
 
-Similar to MkDocs we follow a sponsorware and insiders approach to releases and advanced features. Advanced features being anything beyond the basic and free functionality. New features are first exclusively released to sponsors as part of Insiders. I am new to this concept so have taken the lead from other projects specifically mkdocs as an example of how this can work well. Their documentation is great on the subject: https://squidfunk.github.io/mkdocs-material/insiders/
+Similar to MkDocs we follow a sponsor-ware and insiders approach to releases and advanced features. Advanced features being anything beyond the basic and free functionality. New features are first exclusively released to sponsors as part of Insiders. I am new to this concept so have taken the lead from other projects specifically mkdocs as an example of how this can work well. Their documentation is great on the subject: https://squidfunk.github.io/mkdocs-material/insiders/
 
 I plan to use mkdocs in this project and others in the near future.
