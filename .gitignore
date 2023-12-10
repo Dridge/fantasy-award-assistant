@@ -1,3 +1,13 @@
+# Application specific authentication.txt method
+# an encrypted authentication.txt file, enrypted with your fant-key
+authentication.txt
+authentication.enc
+# Certs and keys, atm used for both encrypting the authenticationfile
+# and a certificate for SSL generally
+fant-cert.pem
+fant-cert.crt
+fant-key.pem
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies

@@ -3,6 +3,13 @@ import './App.css';
 import React, { useState } from 'react';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'August', 'September', 'October', 'November', 'December'];
+
+// Using the Fetch API
+// See: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+async function getData() {
+  // TODO move handleGoClick to here
+}
+
 export default function App() {
   const [inputs, setInputs] = useState({
     leagueId: '',
@@ -17,23 +24,34 @@ export default function App() {
   };
 
   const [goResult, setGoResult] = useState('');
-
+  const [goMonth, setGoMonth] = useState('');
+  const encodedAuthString = '';
+  var params = {leagueId: "${inputs.leagueId}", month: "${inputs.month}"};
   const handleGoClick = () => {
-    fetch('https://example.com/api/resource', {
+    fetch('https://localhost:8080/getMom?'+ new URLSearchParams(params), {
       method: 'GET',
+      mode: "cors",
+      credentials: "same-origin",
       headers: {
-        'Authorization': 'Bearer <access_token>',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        'param1': 'value1',
-        'param2': 'value2'
-      })
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://localhost',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Max-Age': '86400',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+        "Authorization": "Basic " + encodedAuthString
+      }
     })
-    .then(response => response.json())
+    .then(response => {
+        response.json()
+        // data is publicly available data, so it is okay to store inside localStorage (auth tokens would not be okay)
+        localStorage.setItem('data', this.response)
+    })
     .then(data => console.log(data))
     .catch(error => console.error(error))
     setGoResult(`${inputs.leagueId}`);
+    setGoMonth(`${inputs.month}`);
+
   };
 
   return (
@@ -110,6 +128,8 @@ export default function App() {
           <div>
             <p className="simple-text">live result: {inputs.leagueId}</p>
             <p className="simple-text">go result: {goResult}</p>
+            <p className="simple-text">go month: {goMonth}</p>
+            <p className="simple-text">go data, local storage: {localStorage.getItem('data')}</p>
           </div>
       </div>
     </div>

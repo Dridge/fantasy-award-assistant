@@ -51,6 +51,14 @@ If unsure see node, nvm and npm docs, but try `nvm install 16 && nvm use 16`
 - Build with `npm run build`
 - The build cmd may prompt for install: `npm install -g serve`
 
+### Security
+
+Before your site will be able to make requests to the API you need to set up an encoded `authentication.txt` file, and name it `authentication.enc `in the root og the project. This forms part of the requests to authenticate yourself as a authorised user.
+
+In future this approach will be updated and allow many sites or apps, to authenticate if they are authorised.
+
+You also need a certificate named `fant-cert.crt` in order to avoid the usual complaints with SSL and browsers. A self-signed certificate is fine currently but in the future this will change.
+
 ## The implementation details
 
 ### Simple web form
