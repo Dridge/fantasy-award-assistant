@@ -2,18 +2,54 @@ import logo from './images/logo.png';
 import './App.css';
 import React, { useState } from 'react';
 
-const months = ['January', 'February', 'March', 'April', 'May', 'August', 'September', 'October', 'November', 'December'];
+// TODO DONT PRESENT IN UPPER CASE
+const months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
 
 // Using the Fetch API
 // See: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-async function getData() {
-  // TODO move handleGoClick to here
+async function getData(params) {
+    try {
+      const response = await fetch(`http://localhost:8443/getMom?${params}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
+    //Old code
+    //  const handleGoClick = () => {
+    //    fetch('http://localhost:8443/getMom' + encodeURIComponent('?') + new URLSearchParams(params), {
+    //      method: 'GET',
+    //      headers: {
+    //        'Content-Type': 'application/json',
+    //        // 'Access-Control-Allow-Origin': 'https://localhost',
+    //        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
+    //        // 'Access-Control-Allow-Credentials': 'true',
+    //        // 'Access-Control-Max-Age': '86400',
+    //        // 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+    //      }
+    //    })
+    //    .then(response => {
+    //        console.log("Response received")
+    //        response.json()
+    //        // data is publicly available data, so it is okay to store inside localStorage (auth tokens would not be okay)
+    //        localStorage.setItem('data', this.response)
+    //    })
+    //    .then(data => console.log(data))
+    //    .catch(error => console.error(error))
 }
 
 export default function App() {
   const [inputs, setInputs] = useState({
     leagueId: '',
-    month: 'January',
+    month: 'JANUARY',
     risingStar: 0,
     domination: 0,
     consistency: 0
@@ -25,35 +61,36 @@ export default function App() {
 
   const [goResult, setGoResult] = useState('');
   const [goMonth, setGoMonth] = useState('');
-  const encodedAuthString = '';
-  var params = {leagueId: "${inputs.leagueId}", month: "${inputs.month}"};
-  const handleGoClick = () => {
-    fetch('https://localhost:8080/getMom?'+ new URLSearchParams(params), {
-      method: 'GET',
-      mode: "cors",
-      credentials: "same-origin",
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://localhost',
-        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
-        'Access-Control-Allow-Credentials': 'true',
-        'Access-Control-Max-Age': '86400',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
-        "Authorization": "Basic " + encodedAuthString
-      }
-    })
-    .then(response => {
-        response.json()
-        // data is publicly available data, so it is okay to store inside localStorage (auth tokens would not be okay)
-        localStorage.setItem('data', this.response)
-    })
-    .then(data => console.log(data))
-    .catch(error => console.error(error))
+  const [apiResult, setApiResult] = useState(null);
+  var paramInputs = {
+      "leagueId": "$inputs.leagueId",
+      "month": "$inputs.month"
+  };
+
+  var params = [];
+  for (var property in paramInputs) {
+    // var encodedKey = encodeURIComponent(property);
+    // var encodedValue = encodeURIComponent(params[property]);
+    // params.push(encodedKey + "=" + encodedValue);
+    params.push(property + "=" + params[property]);
+  }
+  params = params.join("&");
+  console.log(params);
+    const handleGoClick = async () => {
+      const params = new URLSearchParams({
+        leagueId: inputs.leagueId,
+        month: inputs.month,
+        risingStar: inputs.risingStar,
+        domination: inputs.domination,
+        consistency: inputs.consistency
+      }).toString();
+  const data = await getData(params);
+
+    setApiResult(data);
     setGoResult(`${inputs.leagueId}`);
     setGoMonth(`${inputs.month}`);
 
   };
-
   return (
     <div className="App">
       <header className="App-header">
@@ -129,6 +166,7 @@ export default function App() {
             <p className="simple-text">live result: {inputs.leagueId}</p>
             <p className="simple-text">go result: {goResult}</p>
             <p className="simple-text">go month: {goMonth}</p>
+            <p className="simple-text">API result: {apiResult ? JSON.stringify(apiResult) : 'tbc...'}</p>
             <p className="simple-text">go data, local storage: {localStorage.getItem('data')}</p>
           </div>
       </div>
